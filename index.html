@@ -1,0 +1,13 @@
+<button id="btnGostei">Gostei 👍</button>
+<p id="textoTotal">Total de cliques: 0</p>
+
+<script>
+    const botao = document.getElementById('btnGostei');
+    const texto = document.getElementById('textoTotal');
+
+    let totalClique = 0;
+    botao.addEventListener('click', function() {
+        totalClique = totalClique + 1;
+        texto.innerText = "Total de cliques: " + totalClique;
+    });
+</script>
