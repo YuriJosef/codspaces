@@ -1,0 +1,57 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 8 - Adivinhação</title>
+</head>
+<body>
+    <h2>Adivinhe o Número (1-20)</h2>
+    <input type="number" id="palpite">
+    <button id="btnTentar">Tentar</button>
+    <p id="mensagem"></p>
+    <p>Tentativas: <span id="contagem">0</span></p>
+    <button id="btnReiniciar" style="display:none;">Reiniciar Jogo</button>
+
+    <script>
+        let numeroSecreto = Math.floor(Math.random() * 20) + 1;
+        let tentativas = 0;
+        let jogoAcabou = false;
+
+        const btnTentar = document.getElementById('btnTentar');
+        const btnReiniciar = document.getElementById('btnReiniciar');
+        const msg = document.getElementById('mensagem');
+        const contagem = document.getElementById('contagem');
+
+        btnTentar.addEventListener('click', function() {
+            if (jogoAcabou) return;
+
+            let palpite = parseInt(document.getElementById('palpite').value);
+            tentativas++;
+            contagem.innerText = tentativas;
+
+            if (palpite === numeroSecreto) {
+                msg.innerText = "Acertou!";
+                msg.style.color = "green";
+                jogoAcabou = true;
+                btnTentar.style.display = 'none';
+                btnReiniciar.style.display = 'inline';
+            } else if (palpite > numeroSecreto) {
+                msg.innerText = "Muito alto";
+                msg.style.color = "red";
+            } else {
+                msg.innerText = "Muito baixo";
+                msg.style.color = "red";
+            }
+        });
+
+        btnReiniciar.addEventListener('click', function() {
+            numeroSecreto = Math.floor(Math.random() * 20) + 1;
+            tentativas = 0;
+            contagem.innerText = 0;
+            msg.innerText = "";
+            btnTentar.style.display = 'inline';
+            btnReiniciar.style.display = 'none';
+            jogoAcabou = false;
+        });
+    </script>
+</body>
+</html>

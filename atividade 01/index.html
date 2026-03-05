@@ -1,0 +1,23 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 1 - Contador</title>
+</head>
+<body>
+    <h1>Blog do Futuro</h1>
+    <button id="btnGostei">Gostei 👍</button>
+    <p id="textoContador">Total de cliques: 0</p>
+
+    <script>
+        const botao = document.getElementById('btnGostei');
+        const texto = document.getElementById('textoContador');
+
+        let contador = 0;
+
+        botao.addEventListener('click', function() {
+            contador = contador + 1; // Operador
+            texto.innerText = "Total de cliques: " + contador; 
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 6 - Missões</title>
+    <style>
+        .concluida { text-decoration: line-through; color: gray; }
+    </style>
+</head>
+<body>
+    <h2>Missões do Jogo</h2>
+    <input type="text" id="novaMissao" placeholder="Nova missão">
+    <button id="btnAdd">Adicionar</button>
+    <ul id="listaMissoes"></ul>
+
+    <script>
+        const btnAdd = document.getElementById('btnAdd');
+        const input = document.getElementById('novaMissao');
+        const lista = document.getElementById('listaMissoes');
+
+        btnAdd.addEventListener('click', function() {
+            let texto = input.value;
+            if(texto === "") return;
+
+            let li = document.createElement('li');
+            li.innerText = texto;
+            
+            li.addEventListener('click', function() {
+                li.classList.toggle('concluida');
+            });
+
+            lista.appendChild(li);
+            input.value = ""; 
+        });
+    </script>
+</body>
+</html>

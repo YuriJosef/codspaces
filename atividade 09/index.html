@@ -1,0 +1,47 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 9 - Votação</title>
+</head>
+<body>
+    <h2>Votação do Representante</h2>
+    <button onclick="votar('Ana')">Votar em Ana</button>
+    <button onclick="votar('Bruno')">Votar em Bruno</button>
+    <button onclick="votar('Carlos')">Votar em Carlos</button>
+    
+    <div style="margin-top: 20px;">
+        <p>Ana: <span id="votosAna">0</span></p>
+        <p>Bruno: <span id="votosBruno">0</span></p>
+        <p>Carlos: <span id="votosCarlos">0</span></p>
+        <h3 id="resultadoVencedor"></h3>
+    </div>
+
+    <script>
+        let votosAna = 0;
+        let votosBruno = 0;
+        let votosCarlos = 0;
+
+        function votar(candidato) {
+            if (candidato === 'Ana') votosAna++;
+            else if (candidato === 'Bruno') votosBruno++;
+            else if (candidato === 'Carlos') votosCarlos++;
+
+            document.getElementById('votosAna').innerText = votosAna;
+            document.getElementById('votosBruno').innerText = votosBruno;
+            document.getElementById('votosCarlos').innerText = votosCarlos;
+
+            let vencedor = "";
+            if (votosAna > votosBruno && votosAna > votosCarlos) {
+                vencedor = "Ana está ganhando!";
+            } else if (votosBruno > votosAna && votosBruno > votosCarlos) {
+                vencedor = "Bruno está ganhando!";
+            } else if (votosCarlos > votosAna && votosCarlos > votosBruno) {
+                vencedor = "Carlos está ganhando!";
+            } else {
+                vencedor = "Empate no momento.";
+            }
+            document.getElementById('resultadoVencedor').innerText = vencedor;
+        }
+    </script>
+</body>
+</html>

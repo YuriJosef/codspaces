@@ -1,0 +1,40 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 7 - Validação</title>
+</head>
+<body>
+    <h2>Cadastro</h2>
+    <label>Nome:</label>
+    <input type="text" id="nome">
+    <span id="erroNome" style="color:red; display:none;">Nome vazio!</span>
+    <br><br>
+    <label>Email:</label>
+    <input type="text" id="email">
+    <span id="erroEmail" style="color:red; display:none;">Email inválido!</span>
+
+    <script>
+        const inputNome = document.getElementById('nome');
+        const inputEmail = document.getElementById('email');
+        const erroNome = document.getElementById('erroNome');
+        const erroEmail = document.getElementById('erroEmail');
+
+        inputNome.addEventListener('input', function() {
+            if (inputNome.value.length === 0) {
+                erroNome.style.display = 'inline';
+            } else {
+                erroNome.style.display = 'none';
+            }
+        });
+
+        inputEmail.addEventListener('input', function() {
+            
+            if (!inputEmail.value.includes('@')) {
+                erroEmail.style.display = 'inline';
+            } else {
+                erroEmail.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 2 - Porteiro</title>
+    <style>
+        #resultado { font-weight: bold; margin-top: 10px; }
+        .permitido { color: green; }
+        .proibido { color: red; }
+    </style>
+</head>
+<body>
+    <h2>Sistema de Entrada</h2>
+    <input type="number" id="idadeInput" placeholder="Digite sua idade">
+    <button id="btnVerificar">Verificar</button>
+    <p id="resultado"></p>
+
+    <script>
+        const btn = document.getElementById('btnVerificar');
+        const input = document.getElementById('idadeInput');
+        const res = document.getElementById('resultado');
+
+        btn.addEventListener('click', function() {
+            let idade = parseInt(input.value);
+
+    
+            if (idade >= 18) {
+                res.innerText = "Entrada permitida";
+                res.className = "permitido";
+            } else {
+                res.innerText = "Entrada proibida";
+                res.className = "proibido";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 10 - Cadastro Completo</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .campo { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input { padding: 8px; width: 100%; max-width: 300px; box-sizing: border-box; }
+        .erro { color: red; font-size: 0.85em; display: none; } /* Escondido por padrão */
+        .sucesso { color: green; font-weight: bold; margin-top: 20px; display: none; }
+        button { padding: 10px 20px; cursor: pointer; background-color: #28a745; color: white; border: none; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+
+    <h2>Cadastro Startup</h2>
+    <form id="formCadastro">
+        
+        <div class="campo">
+            <label>Nome:</label>
+            <input type="text" id="nome" placeholder="Seu nome">
+            <span id="erroNome" class="erro">Nome é obrigatório.</span>
+        </div>
+
+        <div class="campo">
+            <label>Email:</label>
+            <input type="text" id="email" placeholder="seu@email.com">
+            <span id="erroEmail" class="erro">Email inválido (deve conter @).</span>
+        </div>
+
+        <div class="campo">
+            <label>Idade:</label>
+            <input type="number" id="idade" placeholder="Sua idade">
+            <span id="erroIdade" class="erro">Deve ser maior ou igual a 18 anos.</span>
+        </div>
+
+        <div class="campo">
+            <label>Senha:</label>
+            <input type="password" id="senha" placeholder="Mínimo 8 caracteres">
+            <span id="erroSenha" class="erro">Senha deve ter no mínimo 8 caracteres.</span>
+        </div>
+
+        <div class="campo">
+            <label>Confirmar Senha:</label>
+            <input type="password" id="confirmaSenha" placeholder="Repita a senha">
+            <span id="erroConfirmaSenha" class="erro">As senhas não coincidem.</span>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div id="mensagemSucesso" class="sucesso">
+        Cadastro realizado com sucesso! Bem-vindo.
+    </div>
+
+    <script>
+        const form = document.getElementById('formCadastro');
+        const msgSucesso = document.getElementById('mensagemSucesso');
+
+        function validarFormulario(event) {
+            event.preventDefault();
+
+            limparErros();
+            msgSucesso.style.display = 'none';
+
+            let nome = document.getElementById('nome').value.trim();
+            let email = document.getElementById('email').value.trim();
+            let idade = parseInt(document.getElementById('idade').value);
+            let senha = document.getElementById('senha').value;
+            let confirmaSenha = document.getElementById('confirmaSenha').value;
+
+            let temErro = false;
+
+            if (nome === "") {
+                mostrarErro('erroNome');
+                temErro = true;
+            }
+
+            if (!email.includes('@')) {
+                mostrarErro('erroEmail');
+                temErro = true;
+            }
+
+            if (idade < 18) {
+                mostrarErro('erroIdade');
+                temErro = true;
+            }
+
+            if (senha.length < 8) {
+                mostrarErro('erroSenha');
+                temErro = true;
+            }
+
+            if (senha !== confirmaSenha) {
+                mostrarErro('erroConfirmaSenha');
+                temErro = true;
+            }
+
+            if (!temErro) {
+                msgSucesso.style.display = 'block';
+                form.reset(); 
+            }
+        }
+
+        function mostrarErro(idSpan) {
+            document.getElementById(idSpan).style.display = 'block';
+        }
+
+        function limparErros() {
+            const erros = document.querySelectorAll('.erro');
+            erros.forEach(span => span.style.display = 'none');
+        }
+
+        form.addEventListener('submit', validarFormulario);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex 5 - Tabuada</title>
+</head>
+<body>
+    <h2>Gerador de Tabuada</h2>
+    <input type="number" id="numTabuada" placeholder="Digite um número">
+    <button id="btnGerar">Gerar Tabuada</button>
+    <div id="listaTabuada"></div>
+
+    <script>
+        const btn = document.getElementById('btnGerar');
+
+        btn.addEventListener('click', function() {
+            let num = parseInt(document.getElementById('numTabuada').value);
+            let lista = document.getElementById('listaTabuada');
+            lista.innerHTML = "";
+
+            for (let i = 1; i <= 10; i++) {
+                let resultado = num * i;
+                lista.innerHTML += `<p>${num} x ${i} = ${resultado}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
